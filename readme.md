@@ -38,6 +38,19 @@
 ```
 
 ## 2. 生成待办事项
+
+输入格式（样例）：
+
+```javascript
+[
+      {name: '吃饭', completed: true},
+      {name: '练习', completed: false},
+      {name: '锻炼', completed: true},
+      {name: '睡觉', completed: false}
+    ]
+```
+
+待办事项（样例）：
 ```
 <section>
     <header>
@@ -79,6 +92,29 @@
 ```
 
 ## 3. 生成电影列表
+
+输入格式（样例）：
+
+```javascript
+{
+      "shows": [
+        {
+          "category": "children",
+          "description": "<a href='#'>A show</a> about a cake",
+          "title": "Strawberry Shortcake",
+          "video": "none"
+        },
+        {
+          "category": "children",
+          "description": "A show about a ice",
+          "title": "Vanilla Ice",
+          "video": "none"
+        }
+      ]
+    }
+```
+
+电影列表（样例）：
 ```
 <div data-template-chosen="a">
     <div>
