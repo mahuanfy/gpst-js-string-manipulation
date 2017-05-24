@@ -38,8 +38,65 @@
 ```
 
 ## 2. 生成待办事项
-
+`
+<section>
+    <header>
+        <h1>todos</h1>
+        <form><input type="text" autofocus="" placeholder="What needs to be done?"/></form>
+    </header>
+    <section>
+        <input type="checkbox"/>
+        <label for="toggle-all">Mark all as complete</label>
+        <ul>
+            <li>
+                <div><input type="checkbox" checked="checked"/><label>吃饭</label></div>
+                <form><input type="text"/></form>
+            </li>
+            <li>
+                <div><input type="checkbox"/><label>练习</label></div>
+                <form><input type="text"/></form>
+            </li>
+            <li>
+                <div><input type="checkbox" checked="checked"/><label>锻炼</label></div>
+                <form><input type="text"/></form>
+            </li>
+            <li>
+                <div><input type="checkbox"/><label>睡觉</label></div>
+                <form><input type="text"/></form>
+            </li>
+        </ul>
+    </section>
+    <footer>
+        <strong>2</strong> items left
+        <ul>
+            <li><a href="#/">All</a></li>
+            <li><a href="#/active">Active</a></li>
+            <li><a href="#/completed">Completed</a></li>
+        </ul>
+        <button>Clear completed</button>
+    </footer>
+</section>
+`
 ## 3. 生成电影列表
+`
+<div data-template-chosen="a">
+    <div>
+        <h1>Upcoming Shows</h1>
+        <ul>
+            <li><strong>Title:</strong> Strawberry Shortcake</li>
+            <li><strong>Description:</strong> <a href="#">A show</a> about a cake</li>
+            <li><strong>Video:</strong> none</li>
+            <li><strong>Category:</strong> children</li>
+        </ul>
+        <ul>
+            <li><strong>Title:</strong> Vanilla Ice</li>
+            <li><strong>Description:</strong> A show about a ice</li>
+            <li><strong>Video:</strong> none</li>
+            <li><strong>Category:</strong> children</li>
+        </ul>
+    </div>
+</div>
+`
 
 ## 参考资料
 1. [Javascript基础](http://codefordream.com/courses/js_basic/sections)
