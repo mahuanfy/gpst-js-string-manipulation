@@ -38,7 +38,7 @@
 ```
 
 ## 2. 生成待办事项
-`
+```
 <section>
     <header>
         <h1>todos</h1>
@@ -76,10 +76,10 @@
         <button>Clear completed</button>
     </footer>
 </section>
-`
+```
 
 ## 3. 生成电影列表
-`
+```
 <div data-template-chosen="a">
     <div>
         <h1>Upcoming Shows</h1>
@@ -97,7 +97,7 @@
         </ul>
     </div>
 </div>
-`
+```
 
 ## 参考资料
 1. [Javascript基础](http://codefordream.com/courses/js_basic/sections)
