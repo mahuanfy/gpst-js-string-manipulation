@@ -1,5 +1,5 @@
 'use strict';
-let {formatTags, countBarcodes, buildCartItems, buildPromotions, calculateTotalPrices, buildReceipt, printReceipt} = require('../main/main');
+let {formatTags, countBarcodes, buildCartItems, buildPromotions, calculateTotalPrices, buildReceipt, printReceipt} = require('../main/1-main');
 let {loadAllItems, loadPromotions} = require('./fixtures');
 
 describe('pos', () => {
