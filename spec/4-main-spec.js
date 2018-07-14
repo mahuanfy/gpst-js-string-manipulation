@@ -1,4 +1,4 @@
-let {generateHtml} = require('../src/main.js');
+let {generateHtml} = require('../main/main.js');
 
 describe('string-test4', () => {
 

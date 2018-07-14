@@ -1,7 +1,7 @@
 'use strict';
 
 let _ = require('lodash');
-let {loadAllItems, loadPromotions} = require('../spec/fixtures');
+let { loadAllItems, loadPromotions } = require('../spec/fixtures');
 
 function printReceipt(tags) {
   let formattedTags = formatTags(tags);
@@ -19,10 +19,10 @@ function printReceipt(tags) {
 function formatTags(tags) {
   return _.map(tags, tag => {
     if (tag.includes('-')) {
-      let [barcode,count] = tag.split('-');
-      return {barcode, count: parseFloat(count)};
+      let [barcode, count] = tag.split('-');
+      return { barcode, count: parseFloat(count) };
     } else {
-      return {barcode: tag, count: 1};
+      return { barcode: tag, count: 1 };
     }
   })
 }
@@ -32,12 +32,12 @@ function _getExistElementByBarcodes(array, barcode) {
 }
 
 function countBarcodes(formattedTags) {
-  return _.reduce(formattedTags, (result, formattedTag)=> {
+  return _.reduce(formattedTags, (result, formattedTag) => {
     let found = _getExistElementByBarcodes(result, formattedTag.barcode);
     if (found) {
       found.count += formattedTag.count;
     } else {
-      result.push({barcode: formattedTag.barcode, count: formattedTag.count});
+      result.push({ barcode: formattedTag.barcode, count: formattedTag.count });
     }
     return result;
   }, [])
@@ -45,19 +45,19 @@ function countBarcodes(formattedTags) {
 }
 
 function buildCartItems(countedBarcodes, allItems) {
-  return _.map(countedBarcodes, ({barcode, count})=> {
-    let {name, unit, price} = _getExistElementByBarcodes(allItems, barcode);
-    return {barcode, name, unit, price, count};
+  return _.map(countedBarcodes, ({ barcode, count }) => {
+    let { name, unit, price } = _getExistElementByBarcodes(allItems, barcode);
+    return { barcode, name, unit, price, count };
   })
 }
 
 function buildPromotions(cartItems, promotions) {
   let currentPromotion = promotions.find((promotion) => promotion.type === 'BUY_TWO_GET_ONE_FREE');
-  return cartItems.map(({price, count, barcode, name, unit})=> {
+  return cartItems.map(({ price, count, barcode, name, unit }) => {
     let hasPromoted = currentPromotion.barcodes.find(b => b === barcode);
     let saved = hasPromoted ? price * Math.floor(count / 3) : 0;
     let payPrice = price * count - saved;
-    return {barcode, name, unit, price, count, payPrice, saved};
+    return { barcode, name, unit, price, count, payPrice, saved };
   })
 }
 
@@ -68,10 +68,10 @@ function calculateTotalPrices(promotedItems) {
   };
 }
 
-function buildReceipt(promotedItems, {totalPayPrice, totalSaved}) {
+function buildReceipt(promotedItems, { totalPayPrice, totalSaved }) {
   return {
-    receiptItems: promotedItems.map(({name, unit, price, count, payPrice, saved})=> {
-      return {name, unit, price, count, payPrice, saved};
+    receiptItems: promotedItems.map(({ name, unit, price, count, payPrice, saved }) => {
+      return { name, unit, price, count, payPrice, saved };
     }),
     totalPayPrice,
     totalSaved
@@ -79,7 +79,16 @@ function buildReceipt(promotedItems, {totalPayPrice, totalSaved}) {
 }
 
 function buildReceiptString(receipt) {
-  // TODO
+  let splicing = "***<没钱赚商店>收据***\n"
+
+  receipt.receiptItems.map(item => {
+    splicing += `名称：${item.name}，数量：${item.count}${item.unit}，单价：${item.price.toFixed(2)}(元)，小计：${item.payPrice.toFixed(2)}(元)\n`
+  })
+  splicing += `----------------------
+总计：${receipt.totalPayPrice.toFixed(2)}(元)
+节省：${receipt.totalSaved.toFixed(2)}(元)
+**********************`
+  return splicing
 }
 
 module.exports = {
