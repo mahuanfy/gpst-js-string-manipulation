@@ -6,7 +6,7 @@ function generateHtml(shows) {
   shows.shows.map(item =>{
       result +=`        <ul>
             <li><strong>Title:</strong> ${item.title}</li>
-            <li><strong>Description:</strong> ${item.description}</li>
+            <li><strong>Description:</strong> ${item.description.replace(/\'/g,"\"")}</li>
             <li><strong>Video:</strong> ${item.video}</li>
             <li><strong>Category:</strong> ${item.category}</li>
         </ul>\n`
